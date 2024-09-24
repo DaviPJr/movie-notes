@@ -102,3 +102,18 @@ app.post("/add-movie", async (req, res) => {
     }
 })
 
+app.post("/delete/:id", async (req, res) => {
+    const movieID = req.params.id;
+    try {
+        const query = "DELETE from movies WHERE id = $1";
+        const values = [movieID];
+
+        await db.query(query, values);
+        console.log(`Filme com ID: ${movieID} excluído com sucesso! `)
+        res.redirect("/");
+    } catch (error) {
+        console.error("Erro ao excluir o filme:", error)
+        res.status(500).send("Erro ao excluir o filme.")
+    }
+})
+

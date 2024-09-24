@@ -8,10 +8,14 @@
 </head>
 <body>
     <header>
-        <h1>Davi Pereira's Blockbuster</h1>
-        <h2>Filmes atuais que tenho visto:</h2>
-        <p class="movie-header">Esse website foi criado para listar os filmes que tenho visto, e uma pequena resenha. </p>
-        <a href="/add-movie"><button>Adicionar Filme</button></a>
+        <div class="header-content">
+            <h1>Davi Pereira's Blockbuster</h1>
+            <h2>Esse website foi criado para listar os filmes que tenho visto, e uma pequena resenha. </h2>                     
+            <a href="/add-movie"><button>Adicionar Filme</button></a>
+        </div>
+        <div class="header-img">
+            <img src="/assets/woman.png" alt="Balde de pipoca">
+        </div>
     </header>
     <main>
         <div class="movie-container">
@@ -23,11 +27,18 @@
                             <h3><%= movie.title %></h3>
                             <p><%= movie.description %></p>
                             <p>⭐️ Avaliação: <%= movie.rating %></p>
-                            <button onclick="openEditForm('<%= movie.id %>')">Editar</button>
+
+                            <div class="buttons">
+                                <button onclick="openEditForm('<%= movie.id %>')">Editar</button>
+                             <form action="/delete/<%= movie.id %>" method="post">
+                                <button type="submit">Excluir</button>
+                             </form>
+                            </div>
+
                             <div id="edit-modal-<%= movie.id %>" class="modal">
                                 <div class="modal-content">
                                     <span class="close" onclick="closeEditForm('<%= movie.id %>')">&times;</span>
-                                    <h2><%= movie.title %></h2>
+                                    <p class="modal-title"><%= movie.title %></p>
                                     <form id="form-content" action="/edit/<%= movie.id %>" method="post">
                                         <label for="description">Descrição:</label>
                                         <textarea name="description" required><%= movie.description %></textarea>
@@ -37,6 +48,7 @@
                                     </form>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 <% }) %>

@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Filme</title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/add-movie.css">
 </head>
 <body>
     <header>
-        <h1>Adicionar um novo filme</h1>
+        <h1>Adicione um novo filme: </h1>
     </header>
+    <aside>
+        <img src="/assets/journal-popcorn-bucket.png" alt="">
+    </aside>
     <main>
         <form action="/add-movie" method="post">
-            <label for="title">Nome do filme</label>
+            <label for="title">Nome do filme:</label>
             <input type="text" name="title" id="title" required>
 
-            <label for="description">Descrição</label>
+            <label for="description">Descrição:</label>
             <textarea name="description" id="description" required></textarea>
 
-            <label for="rating">Avaliação</label>
+            <label for="rating">Avaliação: (XX/10)</label>
             <input type="text" name="rating" id="rating" required>
 
             <button type="submit">Adicionar Filme</button>
