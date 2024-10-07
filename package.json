@@ -13,8 +13,9 @@
     "axios": "^1.7.4",
     "body-parser": "^1.20.2",
     "capstone-project-book-notes": "file:",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^3.21.2",
+    "express": "^4.21.0",
     "pg": "^8.11.3"
   }
 }

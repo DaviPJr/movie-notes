@@ -2,21 +2,22 @@ import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import pg from "pg";
+import env from "dotenv";
 
 const app = express();
 const port = 3000;
+env.config();
 
 const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "movies",
-    password: "1234",
-    port: 5432,
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
+    port: process.env.PG_PORT,
   });
   db.connect();
 
-const apiKey = 'f3b3893b0900a73ece91dd262b5f6cf6'; 
-// const movieTitles = ['Dune', 'Poor Things', 'Spirited Away', 'Challengers', 'Get Out'];
+const apiKey = process.env.API_KEY; 
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));

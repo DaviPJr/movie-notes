@@ -30,9 +30,9 @@
 
                             <div class="buttons">
                                 <button onclick="openEditForm('<%= movie.id %>')">Editar</button>
-                             <form action="/delete/<%= movie.id %>" method="post">
-                                <button type="submit">Excluir</button>
-                             </form>
+                                <form action="/delete/<%= movie.id %>" method="post" onsubmit="return confirmDelete()">
+                                    <button type="submit">Excluir</button>
+                                </form>
                             </div>
 
                             <div id="edit-modal-<%= movie.id %>" class="modal">
@@ -77,6 +77,9 @@
                 modal.style.display = "none";
             }
         });
+    }
+    function confirmDelete() {
+        return confirm("Tem certeza que deseja excluir este filme?");
     }
 </script>
 </html>
